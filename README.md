@@ -1,14 +1,18 @@
-# Simple Todo App
+# Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+this is a Todo app that I made during sprint 7 of my Triple Ten journey. It invovled creation of Classes and exporting it to an index.js file. I learned a lot during this project and Im proud to show off what was accomplished.
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+This Todo app is fully functional with a form that updates new Todo Items with a unique Id and class. made with OOP to make it easy for other engineers to interperet the programming.
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
+- HTML
+- CSS
+- Javascript
+- Form Validation
+- OOP
 
 ## Deployment
 
