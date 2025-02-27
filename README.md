@@ -18,4 +18,4 @@ This Todo app is fully functional with a form that updates new Todo Items with a
 
 This project is deployed on GitHub Pages:
 
-- ADD LINK HERE
+- https://joshricks.github.io/se_project_todo-app/
