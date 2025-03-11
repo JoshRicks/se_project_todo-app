@@ -5,11 +5,26 @@ import Todo from "../components/todo.js"
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import TodoCounter from '../components/TodoCounter.js';
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopupEl = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
 const todosList = document.querySelector(".todos__list");
+
+const todoCounter = new TodoCounter(initialTodos, ".counter__text")
+
+function handleCheck(completed) {
+  todoCounter.updateCompleted(completed)
+};
+
+function handleDelete(completed) {
+  if(completed){
+    todoCounter.updateCompleted(false)
+  }
+  todoCounter.updateTotal(false);
+}
+
 
 const addTodoPopup = new PopupWithForm({ 
   popupSelector: "#add-todo-popup", 
@@ -20,7 +35,7 @@ addTodoPopup.setEventListeners();
 
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
-  const todo = new Todo(data, "#todo-template");
+  const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);
   const todoElement = todo.getView();
   return todoElement;
 };
@@ -52,7 +67,8 @@ addTodoForm.addEventListener("submit", (evt) => {
   const id = uuidv4();
   const values = { name, date, id };
   const todoElement = generateTodo(values);
-  section.addItem(todoElement); 
+  section.addItem(todoElement);
+  todoCounter.updateTotal(true)
   addTodoPopup.close();
 });
 
