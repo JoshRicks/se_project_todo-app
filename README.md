@@ -4,7 +4,7 @@ this is a Todo app that I made during sprint 7 of my Triple Ten journey. It invo
 
 ## Functionality
 
-This Todo app is fully functional with a form that updates new Todo Items with a unique Id and class. made with OOP to make it easy for other engineers to interperet the programming.
+This Todo app is fully functional with a form that updates new Todo Items with a unique Id and class. I have also implemented a todo counter that tells you the progress on your Todos. made with OOP to make it easy for other engineers to interperet the programming.
 
 ## Technology
 
