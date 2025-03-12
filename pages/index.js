@@ -28,7 +28,21 @@ function handleDelete(completed) {
 
 const addTodoPopup = new PopupWithForm({ 
   popupSelector: "#add-todo-popup", 
-  handleFormSubmit: () => {}
+  handleFormSubmit: (inputValues) => {
+    const name = inputValues.name;
+    const dateInput = inputValues.date;
+
+    const date = new Date(dateInput);
+    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+
+  const id = uuidv4();
+  const values = { name, date, id };
+  const todoElement = generateTodo(values);
+  section.addItem(todoElement);
+  todoCounter.updateTotal(true)
+  addTodoPopup.close();
+  newTodoValidator.resetValidation();
+  }
 });
 
 addTodoPopup.setEventListeners();
@@ -53,23 +67,6 @@ section.renderItems();
 
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();
-});
-
-addTodoForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const name = evt.target.name.value;
-  const dateInput = evt.target.date.value;
-
-  // Create a date object and adjust for timezone
-  const date = new Date(dateInput);
-  date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-
-  const id = uuidv4();
-  const values = { name, date, id };
-  const todoElement = generateTodo(values);
-  section.addItem(todoElement);
-  todoCounter.updateTotal(true)
-  addTodoPopup.close();
 });
 
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
